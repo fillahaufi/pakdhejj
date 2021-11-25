@@ -24,6 +24,7 @@
     
 </head>
 <body>
+    <x-Adminnav/>
     @yield('content')
     <x-Footer/>
     

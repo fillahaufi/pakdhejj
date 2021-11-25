@@ -140,4 +140,10 @@ input:checked + .button-group__label {
     #fav {
         width: 100% !important;
     }
+    #qr-reader {
+        width: 100% !important;
+    }
+    #qr-reader__camera_selection {
+        width: -webkit-fill-available;
+    }
 }
