@@ -9,11 +9,13 @@ class Produk extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_produk';
+
     protected $fillable = [
         "nama",
         "img-path",
         "jenis",
-        "isdingin",
+        // "isdingin",
         "harga",
     ];
 

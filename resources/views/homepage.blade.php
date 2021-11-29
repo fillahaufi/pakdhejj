@@ -93,16 +93,16 @@
             </ul>
         
             <ul class="js-filter uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-text-center" uk-grid>
-                @if($allproduk->count() > 1)
+                @if($allproduk->count() > 0)
                     @foreach ($allproduk as $produk)
-                        <li @if($produk->jenis == 0)
+                        <li @if($produk->jenis == 1)
                             data-color="kopi"
                         @else
                             data-color="susu"
                         @endif>
                             <div class="uk-card uk-card-default uk-card-hover" style="cursor: pointer; height: 100%">
                                 <div class="uk-card-media-top" style="max-width: 100%; max-height: 300px; overflow: hidden; display: flex; align-items: center" href="#modal-full" uk-toggle>
-                                    <img style="width: 100%; height: -webkit-fill-available;" src="https://images.unsplash.com/photo-1558122104-355edad709f6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29mZmVlJTIwbWlsa3xlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
+                                    <img style="width: 100%; height: -webkit-fill-available;" src="{{ url('/product_img'.'/'.$produk->img_path) }}" alt="">
                                 </div>
                                 <div class="uk-card-body p-4 d-flex flex-column" style="min-height: 203px">
                                     <h3 class="uk-card-title mb-2 fw-bold" style="text-transform: uppercase">{{ $produk->nama }}</h3>

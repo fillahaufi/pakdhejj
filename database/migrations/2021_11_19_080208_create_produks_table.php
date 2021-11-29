@@ -18,7 +18,7 @@ class CreateProduksTable extends Migration
             $table->string('nama');
             $table->string('img_path');
             $table->unsignedTinyInteger('jenis');
-            $table->unsignedTinyInteger('isdingin');
+            // $table->unsignedTinyInteger('isdingin');
             $table->unsignedInteger('harga');
             $table->unsignedTinyInteger('isavail');
             $table->timestamps();
