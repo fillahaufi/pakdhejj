@@ -22,6 +22,7 @@ class CreateProduksTable extends Migration
             $table->unsignedInteger('harga');
             $table->unsignedTinyInteger('isavail');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

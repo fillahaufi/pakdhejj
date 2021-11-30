@@ -31,22 +31,31 @@
                                 <tr>
                                     <th>Nama Produk</th>
                                     <th>Status</th>
-                                    <th>Jumlah Penjualan</th>
+                                    <th>Terjual</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @if ($nproduk > 0)
-                                    @foreach ($allproduk as $produk)
+                                @if ($produkselling->count() > 0)
+                                    @foreach ($produkselling as $produk)
                                         <tr>
                                             <td style="text-transform: capitalize">{{ $produk->nama }}</td>
-                                            <td>
+                                            {{-- <td> --}}
                                                 @if ($produk->isavail == 0)
-                                                    Non-Aktif
+                                                    {{-- Non-Aktif --}}
+                                                    <td class="uk-text-muted">Non-Aktif</td>
+                                                @elseif ($produk->isavail == 2)
+                                                    <td class="uk-text-danger">Dihapus</td>
                                                 @else
-                                                    Aktif
+                                                    <td class="uk-text-primary">Aktif</td>
+                                                @endif
+                                            {{-- </td> --}}
+                                            <td>
+                                                @if ($produk->jmlsold != null)
+                                                    {{ $produk->jmlsold }}
+                                                @else
+                                                    0
                                                 @endif
                                             </td>
-                                            <td>133</td>
                                         </tr>
                                     @endforeach
                                 @else

@@ -9,6 +9,8 @@ class Pesanan extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'id_nota';
+
     public function admin()
     {
         return $this->belongsTo(User::class);

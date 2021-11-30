@@ -139,6 +139,8 @@ class ProdukController extends Controller
      */
     public function destroy(Produk $produk)
     {
+        $produk->isavail = 2;
+        $produk->save();
         $produk->delete();
         $filename = $produk->img_path;
         // $upload_path = 'product_img';

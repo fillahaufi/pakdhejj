@@ -32,6 +32,8 @@ Route::get('/login', [AdminController::class, 'login']);
 Route::get('/admin', [AdminController::class, 'home']);
 Route::get('/admin/manage', [AdminController::class, 'manage']);
 Route::get('/admin/selling', [AdminController::class, 'selling']);
+Route::get('/admin/selling/{accselling}/acc', [AdminController::class, 'accSelling']);
+Route::get('/admin/selling/{decselling}/dec', [AdminController::class, 'decSelling']);
 
 Route::resource('produks', ProdukController::class);
 Route::get('produks/toggleAction/{produk}', [ProdukController::class, 'toggleAction']);

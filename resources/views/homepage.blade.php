@@ -51,26 +51,40 @@
         <h3>Our Favorite</h3>
         <div id="fav" uk-slider style="width: 75%">
             <div class="uk-position-relative uk-visible-toggle" tabindex="-1">
-                <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-3@l" style=" max-height: 500px">
-                    <li class="m-3" style="overflow: hidden">
-                        <div style="
-                        margin: 0;
-                        position: relative;
-                        top: 50%;
-                        -ms-transform: translateY(-50%);
-                        transform: translateY(-50%);">
-                            <img src="https://images.unsplash.com/photo-1514066558159-fc8c737ef259?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80" alt="">
-                        </div>
-                        <div class="uk-position-bottom uk-panel m-3">
-                            {{-- <h1>Kopi apatuh</h1>
-                            <h3>Rp <span>20,000</span></h3> --}}
-                            {{-- <div class="d-flex flex-row">
+                <ul class="uk-slider-items uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l" style=" max-height: 500px">
+                    @foreach ($produkselling as $produk)
+                        <li class="m-3" style="overflow: hidden;">
+                            {{-- <div style="
+                            margin: 0;
+                            position: relative;
+                            top: 50%;
+                            -ms-transform: translateY(-50%);
+                            transform: translateY(-50%);
+                            height: -webkit-fill-available;
+                            align-items: center">
+                                <img src="{{ url('/product_img'.'/'.$produk->img_path) }}" alt="" style="width: 100%">
+                            </div>
+                            <div class="uk-position-bottom uk-panel m-3">
+                                {{-- <h1>Kopi apatuh</h1>
+                                <h3>Rp <span>20,000</span></h3> --}}
+                                {{-- <div class="d-flex flex-row">
+                                </div> 
+                                <h3 class="uk-card-title mb-0 fw-bold text-white" style="text-transform: uppercase">{{ $produk->nama }}</h3>
+                                <h4 class="mt-0 fw-bold" style="color: #A0583C">Rp <span>{{ $produk->harga }}</span></h4>
+                                <button class="add-to-cart uk-button uk-button-secondary" data-name="{{ $produk->nama }}" data-price="{{ $produk->harga }}" onclick="UIkit.notification({message: 'Pesanan berhasil', pos: 'top-right'})">+ Add to cart</button>
                             </div> --}}
-                            <h3 class="uk-card-title mb-0 fw-bold text-white" style="text-transform: uppercase">Cappucino</h3>
-                            <h4 class="mt-0 fw-bold" style="color: #A0583C">Rp <span>9000</span></h4>
-                            <button class="add-to-cart uk-button uk-button-secondary" data-name="Cappucino" data-price="9000" onclick="UIkit.notification({message: 'Pesanan berhasil', pos: 'top-right'})">+ Add to cart</button>
-                        </div>
-                    </li>
+                            <div class="uk-card uk-card-default uk-card-hover" style="cursor: pointer; height: 100%">
+                                <div class="uk-card-media-top" style="max-width: 100%; max-height: 230px; overflow: hidden; display: flex; align-items: center" href="#modal-full" uk-toggle>
+                                    <img style="width: 100%; height: -webkit-fill-available;" src="{{ url('/product_img'.'/'.$produk->img_path) }}" alt="">
+                                </div>
+                                <div class="uk-card-body p-4 d-flex flex-column" style="min-height: 203px">
+                                    <h3 class="uk-card-title mb-2 fw-bold" style="text-transform: uppercase">{{ $produk->nama }}</h3>
+                                    <h4 class="mt-0 fw-bold" style="color: #A0583C">Rp <span>{{ $produk->harga }}</span></h4>
+                                    <button href="#" class="add-to-cart uk-button uk-button-secondary mt-auto" style="float: right" data-name="{{ $produk->nama }}" data-price="{{ $produk->harga }}" onclick="UIkit.notification({message: 'Pesanan berhasil', pos: 'top-right'})">+ Add to cart</button>
+                                </div>
+                            </div>
+                        </li>
+                    @endforeach
                 </ul>
 
                 <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
@@ -101,7 +115,7 @@
                             data-color="susu"
                         @endif>
                             <div class="uk-card uk-card-default uk-card-hover" style="cursor: pointer; height: 100%">
-                                <div class="uk-card-media-top" style="max-width: 100%; max-height: 300px; overflow: hidden; display: flex; align-items: center" href="#modal-full" uk-toggle>
+                                <div class="uk-card-media-top" style="max-width: 100%; max-height: 260px; overflow: hidden; display: flex; align-items: center" href="#modal-full" uk-toggle>
                                     <img style="width: 100%; height: -webkit-fill-available;" src="{{ url('/product_img'.'/'.$produk->img_path) }}" alt="">
                                 </div>
                                 <div class="uk-card-body p-4 d-flex flex-column" style="min-height: 203px">
@@ -115,30 +129,6 @@
                 @else
                     <p>Tidak ada produk</p>
                 @endif
-                {{-- <li data-color="kopi">
-                    <div class="uk-card uk-card-default uk-card-hover" style="cursor: pointer; height: 100%">
-                        <div class="uk-card-media-top" style="max-width: 100%; max-height: 300px; overflow: hidden; display: flex; align-items: center" href="#modal-full" uk-toggle>
-                            <img style="width: 100%; height: -webkit-fill-available;" src="https://images.unsplash.com/photo-1558122104-355edad709f6?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29mZmVlJTIwbWlsa3xlbnwwfDF8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="">
-                        </div>
-                        <div class="uk-card-body p-4 d-flex flex-column" style="min-height: 203px">
-                            <h3 class="uk-card-title mb-2 fw-bold" style="text-transform: uppercase">kopi susu klasik</h3>
-                            <h4 class="mt-0 fw-bold" style="color: #A0583C">Rp <span>9000</span></h4>
-                            <button href="#" class="add-to-cart uk-button uk-button-secondary mt-auto" style="float: right" data-name="kopi susu klasik" data-price="9000" onclick="UIkit.notification({message: 'Pesanan berhasil', pos: 'top-right'})">+ Add to cart</button>
-                        </div>
-                    </div>
-                </li>
-                <li data-color="susu">
-                    <div class="uk-card uk-card-default uk-card-hover" style="cursor: pointer; height: 100%">
-                        <div class="uk-card-media-top" style="max-width: 100%; max-height: 300px; overflow: hidden; display: flex; align-items: center" href="#modal-full" uk-toggle>
-                            <img style="width: 100%; height: -webkit-fill-available;" src="https://images.unsplash.com/photo-1596038590958-f2d4f27279c1?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=735&q=80" alt="">
-                        </div>
-                        <div class="uk-card-body p-4 d-flex flex-column" style="min-height: 203px">
-                            <h3 class="uk-card-title mb-2 fw-bold" style="text-transform: uppercase">susu coklat</h3>
-                            <h4 class="mt-0 fw-bold" style="color: #A0583C">Rp <span>11000</span></h4>
-                            <button href="#" class="add-to-cart uk-button uk-button-secondary mt-auto" style="float: right" data-name="susu coklat" data-price="11000" onclick="UIkit.notification({message: 'Pesanan berhasil', pos: 'top-right'})">+ Add to cart</button>
-                        </div>
-                    </div>
-                </li> --}}
             </ul>
         </div>
     </div>

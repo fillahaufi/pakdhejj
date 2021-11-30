@@ -25,7 +25,7 @@ class CheckoutController extends Controller
     {
         $this->validate($request, [
             'atas_nama' => 'required',
-            'no_meja' => 'required',
+            // 'no_meja' => 'required',
             'total_harga' => 'required',
         ]);
         $cartdata = $_GET["halah"];
@@ -64,12 +64,12 @@ class CheckoutController extends Controller
 
         $pesanan = new Pesanan;
         $pesanan->atas_nama = $request->input('atas_nama');
-        $pesanan->no_meja = $request->input('no_meja');
+        $pesanan->no_meja = $mejanya;
         $pesanan->total_harga = $request->input('total_harga');
         $pesanan->isdone = 0;
         $pesanan->admin_id = 1;
         $pesanan->save();
-        $idpesanan = $pesanan->id;
+        $idpesanan = $pesanan->id_nota;
 
         for ($i=0; $i < count($cartdata); $i++) { 
             $detailPesanan = new DetailPesanan;
@@ -86,7 +86,7 @@ class CheckoutController extends Controller
             $detailPesanan->save();
         }
 
-        // return 'success';
+        // return $mejanya;
         return redirect('/checkout')
             ->with('success', 'Berhasil melakukan pemesanan!');
     }
