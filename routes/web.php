@@ -6,8 +6,11 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProdukController;
 // use App\Http\Controllers\ProdukController::toggleAction();
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DetailPesananController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PesananController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +32,9 @@ Route::get('/checkout', [CheckoutController::class, 'checkout']);
 Route::post('/checkout/{tokendata}', [CheckoutController::class, 'getcart']);
 
 Route::get('/login', [AdminController::class, 'login']);
+Route::get('/register', [RegisterController::class, 'create']);
+Route::post('/register', [RegisterController::class, 'store']);
+
 Route::get('/admin', [AdminController::class, 'home']);
 Route::get('/admin/manage', [AdminController::class, 'manage']);
 Route::get('/admin/selling', [AdminController::class, 'selling']);
@@ -39,4 +45,6 @@ Route::resource('produks', ProdukController::class);
 Route::get('produks/toggleAction/{produk}', [ProdukController::class, 'toggleAction']);
 Route::resource('detail_pesanans', DetailPesananController::class);
 Route::resource('pesanans', PesananController::class);
+
+// Route::get('/login', [LoginCotroller::class, 'index']);
 // Route::apiResource('/screen', BasicScreeningController::class);

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,27 +12,38 @@
 </head>
 
 <body>
-
+    {{-- <div class="shadow mb-5" style="background-color: #14141486;font-family: Josefin Sans;">
+        <div class="container">
+            <div class="py-5 ">
+                <h2 style="font-weight: bold; color:white">Register As Admin</h2>
+            </div>
+        </div>
+    </div> --}}
     <div class="row py-5 justify-content-center ">
         <div class="col-md-4 mt-5" style="background-color:#14141486;">
             <div class="text-center py-5 font-weight-bold">
                 <img src="/img/logo.png" style="width: 100px">
             </div>
-            <main class="form-signin">
-                <form>
+            <main class="form-register">
+                <form action="/register" method="post">
+                    @csrf
                     <div class="form-floating">
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="text" name="username" class="form-control" id="username" placeholder="Username">
+                        <label for="floatingInput">Username</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="email" name="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                         <label for="floatingInput">Email address</label>
                     </div>
                     <div class="form-floating">
-                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <label for="floatingPassword">Password</label>
-                    </div>
-                    <button class="w-100 btn btn-lg btn-primary " type="submit">Sign in</button>
+                        </div>
+                    <button class="w-100 btn btn-lg btn-primary " type="submit">Register</button>
                 </form>
             </main>
             <small class="d-block my-3 text-center">
-                <a href="/register" style="color: #8f8f8f; font-size: 13px;">Dont have any account? Create here</a>
+                <a href="/login" style="color: #8f8f8f; font-size: 13px;">Already have account? Login here</a>
             </small>
         </div>
     </div>
@@ -44,20 +54,27 @@
  {
   height: 100%;
   background-image: url('/img/bg-foot.png');
-
 }
 
-.form-signin .form-floating:focus-within {
+.form-register .form-floating:focus-within {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-register input[type="email"] {
+  margin-bottom: -1px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-register input[type="text"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-register input[type="password"] {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;

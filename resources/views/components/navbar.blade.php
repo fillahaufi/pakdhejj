@@ -17,10 +17,10 @@
     window.onscroll = function() {myFunction()};
 
     function myFunction() {
-    if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
-        document.getElementById("myP").className = "awowo";
-    } else {
-        document.getElementById("myP").className = "awowo-hop";
-    }
+        if (document.body.scrollTop > 30 || document.documentElement.scrollTop > 30) {
+            document.getElementById("myP").className = "awowo";
+        } else {
+            document.getElementById("myP").className = "awowo-hop";
+        }
     }
 </script>
