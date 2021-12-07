@@ -38,8 +38,37 @@
         <h1 class="m-0" style="text-align: center; text-align: -webkit-center">Layanan Kami</h1> <br>
         <p style="width: 50%">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est amet magni quibusdam, doloremque et perferendis</p>
     </div>
-    <div>
-        
+    <div class="container">
+        <div class="row py-5">
+            <div class="col ">
+                <img src="/img/discussion.jpg" class="img-fluid shadow rounded" style="width: fit-content;" alt="">
+            </div>
+            <div class="col pl-0 align-self-center pl-3">
+                <h2>
+                    Booking Tempat
+                </h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia elit eget dapibus
+                    tristique. Nam eros ante
+                </p>
+              </div>
+        </div>
+        <div class="container">
+            <div class="row py-5">
+                <div class="col pl-0 align-self-center pl-3">
+                    <h2>
+                        Pemesanan Tanpa Kontak Fisik
+                    </h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia elit eget dapibus
+                        tristique. Nam eros ante
+                    </p>
+                </div>
+                <div class="col ">
+                    <img src="/img/mask.jpg" class="img-fluid shadow rounded" style="width: fit-content;" alt="">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 <div id="orderpage" class="section">
