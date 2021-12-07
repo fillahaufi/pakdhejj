@@ -23,6 +23,9 @@
         </div>
     </a>
 </div> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 <div id="jumbotron" style="height: 100vh" uk-parallax="bgy: -400">
     <div class="d-flex flex-column me-3" style="height: -webkit-fill-available; place-content: center; width: fit-content; margin-left: 5%">
         <h1 class="mb-4" style="font-weight: 700; color: #483434; font-size: 4rem">P. Dhe JJ Coffee</h1>
@@ -35,8 +38,7 @@
 </div>
 <div id="service" class="section">
     <div class="title" style="text-align: -webkit-center">
-        <h1 class="m-0" style="text-align: center; text-align: -webkit-center">Layanan Kami</h1> <br>
-        <p style="width: 50%">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Est amet magni quibusdam, doloremque et perferendis</p>
+        <h1 class="m-0" style="text-align: center; text-align: -webkit-center; font-weight: 800;">Layanan Kami</h1> <br>
     </div>
     <div class="container">
         <div class="row py-5">
@@ -97,7 +99,7 @@
                                 {{-- <h1>Kopi apatuh</h1>
                                 <h3>Rp <span>20,000</span></h3> --}}
                                 {{-- <div class="d-flex flex-row">
-                                </div> 
+                                </div>
                                 <h3 class="uk-card-title mb-0 fw-bold text-white" style="text-transform: uppercase">{{ $produk->nama }}</h3>
                                 <h4 class="mt-0 fw-bold" style="color: #A0583C">Rp <span>{{ $produk->harga }}</span></h4>
                                 <button class="add-to-cart uk-button uk-button-secondary" data-name="{{ $produk->nama }}" data-price="{{ $produk->harga }}" onclick="UIkit.notification({message: 'Pesanan berhasil', pos: 'top-right'})">+ Add to cart</button>
@@ -134,7 +136,7 @@
                 <li uk-filter-control="[data-color='susu']"><a href="#" style="text-decoration: none;">Susu - susuan</a></li>
                 {{-- <li uk-filter-control="[data-color='laris']"><a href="#" style="text-decoration: none;">Paling laris</a></li> --}}
             </ul>
-        
+
             <ul class="js-filter uk-child-width-1-2@s uk-child-width-1-3@m uk-child-width-1-4@l uk-text-center" uk-grid>
                 @if($allproduk->count() > 0)
                     @foreach ($allproduk as $produk)
