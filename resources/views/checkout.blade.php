@@ -139,18 +139,6 @@
     });
 </script>
 
-{{-- <script>
-    function onScanSuccess(decodedText, decodedResult) {
-        // Handle on success condition with the decoded text or result.
-        console.log(`Scan result: ${decodedText}`, decodedResult);
-    }
-
-    var html5QrcodeScanner = new Html5QrcodeScanner(
-        "reader", { fps: 10, qrbox: 250 });
-    html5QrcodeScanner.render(onScanSuccess);
-
-</script> --}}
-
 <script>
     // $("#submitdata").click(function(){
     $(document).ready(function() {
@@ -171,31 +159,8 @@
         let totalni2 = document.getElementById('totalni2');
         totalni2.value += shoppingCart.totalCart(cart);
 
-        // $("#submitdata").click(function(e){
-        //     // e.preventDefault();
-        //     // $.ajaxSetup({
-        //     //     headers: {
-        //     //         'X-CSRF-TOKEN': $(usertoken).attr('content')
-        //     //     }
-        //     // });
-
-        //     $.ajax({
-        //         url: nexturl,
-        //         type: "GET",
-        //         data: {
-        //             halah: cartdata,
-        //             _token: usertoken,
-        //         },
-                
-        //         success:function(halah) {
-        //             console.log(halah);
-        //         }
-        //     });
-        // });
     });
 
-    // });
-    // console.log(cartdata);
 </script>
 
 @endsection
