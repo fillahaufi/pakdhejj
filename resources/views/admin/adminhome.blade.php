@@ -4,6 +4,7 @@
 
 <div class="uk-container uk-container-xlarge uk-margin-medium-top uk-margin-medium-bottom">
     <h1 class="uk-margin-medium-bottom">Dashboard</h1>
+    {{-- <p>Selamat datang di dashboard {{ Auth::user()->name }}</p> --}}
     <div class="uk-child-width-1-2@s" uk-grid>
         <div class="uk-child-width-1-1@s uk-margin-medium-bottom" uk-grid style="height: auto; overflow-y: hidden">
             <div class="uk-child-width-1-2@s" uk-grid style="width: -webkit-fill-available; height: fit-content">

@@ -26,14 +26,18 @@ use App\Http\Controllers\PesananController;
 
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/checkout', [CheckoutController::class, 'checkout']);
+Route::get('/checkout/success', [CheckoutController::class, 'success']);
 Route::post('/checkout/{tokendata}', [CheckoutController::class, 'getcart']);
 
-Route::get('/login', [AdminController::class, 'login']);
-Route::get('/admin', [AdminController::class, 'home']);
-Route::get('/admin/manage', [AdminController::class, 'manage']);
-Route::get('/admin/selling', [AdminController::class, 'selling']);
-Route::get('/admin/selling/{accselling}/acc', [AdminController::class, 'accSelling']);
-Route::get('/admin/selling/{decselling}/dec', [AdminController::class, 'decSelling']);
+Route::get('/login', [AdminController::class, 'loginpage'])->name('login');
+Route::post('/authenticate', [AdminController::class, 'authenticate']);
+Route::post('/logout', [AdminController::class, 'logout']);
+
+Route::get('/admin', [AdminController::class, 'home'])->middleware('auth');
+Route::get('/admin/manage', [AdminController::class, 'manage'])->middleware('auth');
+Route::get('/admin/selling', [AdminController::class, 'selling'])->middleware('auth');
+Route::get('/admin/selling/{accselling}/acc', [AdminController::class, 'accSelling'])->middleware('auth');
+Route::get('/admin/selling/{decselling}/dec', [AdminController::class, 'decSelling'])->middleware('auth');
 
 Route::resource('produks', ProdukController::class);
 Route::get('produks/toggleAction/{produk}', [ProdukController::class, 'toggleAction']);

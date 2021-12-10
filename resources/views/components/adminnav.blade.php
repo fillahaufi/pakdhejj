@@ -1,6 +1,9 @@
 <nav class="uk-navbar-container p-3" uk-navbar style="align-items: center; background: #483434">
     <a href="#offcanvas-nav" style="text-decoration: none; color: white; font-weight: bold; font-size: 20px" uk-toggle><span uk-icon="icon: menu; ratio: 2"></span> Menu</a>
-    <a class="ms-auto me-3" href="/#jumbotron" style="text-decoration: none; color: white; font-weight: bold; font-size: 20px"><span uk-icon="icon: sign-out; ratio: 2"></span> Logout</a>
+    <form action="{{ url('/logout') }}" method="post" class="ms-auto me-3">
+        @csrf
+        <button type="submit" class="ms-auto me-3 uk-button uk-button-secondary" style="text-decoration: none; color: white; font-weight: bold; font-size: 20px"><span uk-icon="icon: sign-out; ratio: 2"></span> Logout</button>
+    </form>
 </nav>
 
 <div id="offcanvas-nav" uk-offcanvas="overlay: true">

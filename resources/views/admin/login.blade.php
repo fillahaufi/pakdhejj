@@ -26,16 +26,21 @@
 <body>
     
     <div class="uk-margin-xlarge-top" style="text-align: center;">
+        @if ($errors->has('email'))
+            <span class="invalid-feedback">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
         <h2 class="">Login</h2>
         <p>Please login using your account</p>
-        <form action="GET" style="text-align: -webkit-center">
+        <form action="{{ url('/authenticate') }}" style="text-align: -webkit-center" method="POST">
             @csrf
             <fieldset class="uk-fieldset uk-flex uk-flex-column" style="width: 50%; align-items: center">
                 <div class="uk-margin uk-width-1-3@s">
-                    <input class="uk-input" type="username" placeholder="Username" required>
+                    <input class="uk-input" type="email" name="email" placeholder="email" required>
                 </div>
                 <div class="uk-margin uk-width-1-3@s">
-                    <input class="uk-input" type="password" placeholder="Password" required>
+                    <input class="uk-input" type="password" name="password" placeholder="Password" required>
                 </div>
                 {{-- <a href="" class="uk-margin">Forgot your password?</a> --}}
                 <input type="submit" class="uk-button uk-button-primary uk-width-1-3@s" value="Sign in">

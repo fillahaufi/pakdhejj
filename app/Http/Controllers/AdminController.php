@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ProdukController;
 use App\Models\Produk;
 use App\Models\Pesanan;
@@ -11,8 +12,39 @@ use App\Models\DetailPesanan;
 
 class AdminController extends Controller
 {
-    public function login() {
+    public function loginpage() {
         return view('admin/login');
+    }
+
+    public function authenticate(Request $request)
+    {
+        // return $request->email;
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+
+            // return Auth::user();
+            return redirect()->intended('admin');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/');
     }
 
     public function home() {

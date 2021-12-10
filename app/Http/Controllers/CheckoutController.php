@@ -87,7 +87,13 @@ class CheckoutController extends Controller
         }
 
         // return $mejanya;
-        return redirect('/checkout')
+        return redirect('/checkout/success')
             ->with('success', 'Berhasil melakukan pemesanan!');
+    }
+
+    public function success() 
+    {
+        return view('success');
+            // ->with('success', 'Berhasil melakukan pemesanan!');
     }
 }
