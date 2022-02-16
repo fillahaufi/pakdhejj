@@ -22,6 +22,13 @@
                         {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
                     </div>
                 </div>
+                <div style="height: fit-content">
+                    <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light uk-margin-small">
+                        <h3 class="uk-card-title">Total Penjualan</h3>
+                        <h2>{{ $totalSelling }}</h2>
+                        {{-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p> --}}
+                    </div>
+                </div>
             </div>
             <div class="" style="height: -webkit-fill-available">
                 <div class="uk-card uk-card-secondary uk-card-hover uk-card-body uk-light uk-margin-small" style="height: 100%">

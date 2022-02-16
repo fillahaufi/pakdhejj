@@ -7,19 +7,19 @@ var shoppingCart = (function() {
     // Private methods and propeties
     // =============================
     cart = [];
-    
+
     // Constructor
     function Item(name, price, count) {
       this.name = name;
       this.price = price;
       this.count = count;
     }
-    
+
     // Save cart
     function saveCart() {
       sessionStorage.setItem('shoppingCart', JSON.stringify(cart));
     }
-    
+
       // Load cart
     function loadCart() {
       cart = JSON.parse(sessionStorage.getItem('shoppingCart'));
@@ -27,13 +27,13 @@ var shoppingCart = (function() {
     if (sessionStorage.getItem("shoppingCart") != null) {
       loadCart();
     }
-    
-  
+
+
     // =============================
     // Public methods and propeties
     // =============================
     var obj = {};
-    
+
     // Add to cart
     obj.addItemToCart = function(name, price, count) {
       for(var item in cart) {
@@ -55,6 +55,8 @@ var shoppingCart = (function() {
           break;
         }
       }
+      saveCart();
+        console.log('masuk');
     };
     // Remove item from cart
     obj.removeItemFromCart = function(name) {
@@ -69,7 +71,7 @@ var shoppingCart = (function() {
       }
       saveCart();
     }
-  
+
     // Remove all items from cart
     obj.removeItemFromCartAll = function(name) {
       for(var item in cart) {
@@ -80,14 +82,14 @@ var shoppingCart = (function() {
       }
       saveCart();
     }
-  
+
     // Clear cart
     obj.clearCart = function() {
       cart = [];
       saveCart();
     }
-  
-    // Count cart 
+
+    // Count cart
     obj.totalCount = function() {
       var totalCount = 0;
       for(var item in cart) {
@@ -95,7 +97,7 @@ var shoppingCart = (function() {
       }
       return totalCount;
     }
-  
+
     // Total cart
     obj.totalCart = function(cart) {
       var totalCart = 0;
@@ -104,7 +106,7 @@ var shoppingCart = (function() {
       }
       return Number(totalCart.toFixed(2));
     }
-  
+
     // List cart
     obj.listCart = function() {
       var cartCopy = [];
@@ -113,14 +115,14 @@ var shoppingCart = (function() {
         itemCopy = {};
         for(p in item) {
           itemCopy[p] = item[p];
-  
+
         }
         itemCopy.total = Number(item.price * item.count).toFixed(2);
         cartCopy.push(itemCopy)
       }
       return cartCopy;
     }
-  
+
     // cart : Array
     // Item : Object/Class
     // addItemToCart : Function
@@ -134,11 +136,11 @@ var shoppingCart = (function() {
     // loadCart : Function
     return obj;
   })();
-  
-  
+
+
   // *****************************************
   // Triggers / Events
-  // ***************************************** 
+  // *****************************************
   // Add item
   $('.add-to-cart').click(function(event) {
     event.preventDefault();
@@ -148,13 +150,13 @@ var shoppingCart = (function() {
     // console.log("hawow");
     displayCart();
   });
-  
+
   // Clear items
   $('.clear-cart').click(function() {
     shoppingCart.clearCart();
     displayCart();
   });
-  
+
   let msg = 'Pesanan dibatalkan';
   let pos = 'top-right';
   let stts = 'danger';
@@ -175,14 +177,14 @@ var shoppingCart = (function() {
       //   displayCart();
       // }
       output += "<tr>"
-        + "<td class='table-item' style='text-transform: uppercase'>" + cartArray[i].name + "</td>" 
+        + "<td class='table-item' style='text-transform: uppercase'>" + cartArray[i].name + "</td>"
         + "<td class='table-item'>Rp " + cartArray[i].price + "</td>"
         + "<td><div class='input-group'>"
         // + "<button class='minus-item input-group-addon btn btn-primary' data-name='" + cartArray[i].name + "'>-</button>"
         + "<input type='number' class='item-count form-control' data-name='" + cartArray[i].name + "' value='" + cartArray[i].count + "'>"
         // + "<button class='plus-item btn btn-primary input-group-addon' data-name='" + cartArray[i].name + "'>+</button></div></td>"
         + "<td class='table-item'><button class='delete-item uk-button uk-button-danger bg-danger' data-name='" + cartArray[i].name + "' style='width: 50%;' onclick='UIkit.notification({message:" + '"' + msg + '"' + ", pos: " + '"' + pos + '"' + ", status: " + '"' + stts + '"' + "})'>X</button></td>"
-        + "<td class='table-item'> Rp " + cartArray[i].total + "</td>" 
+        + "<td class='table-item'> Rp " + cartArray[i].total + "</td>"
         +  "</tr>";
     }
     $('.show-cart').html(output);
@@ -195,16 +197,16 @@ var shoppingCart = (function() {
   //     removeItemFromCart(cartArray[i].name);
   //   }
   // }
-  
+
   // Delete item button
-  
+
   $('.show-cart').on("click", ".delete-item", function(event) {
     var name = $(this).data('name')
     shoppingCart.removeItemFromCartAll(name);
     displayCart();
   })
-  
-  
+
+
   // -1
   $('.show-cart').on("click", ".minus-item", function(event) {
     var name = $(this).data('name')
@@ -217,7 +219,7 @@ var shoppingCart = (function() {
     shoppingCart.addItemToCart(name);
     displayCart();
   })
-  
+
   // Item count input
   $('.show-cart').on("change", ".item-count", function(event) {
     var name = $(this).data('name');
@@ -229,6 +231,7 @@ var shoppingCart = (function() {
       shoppingCart.setCountForItem(name, count);
     }
     displayCart();
+
   });
-  
+
   displayCart();
