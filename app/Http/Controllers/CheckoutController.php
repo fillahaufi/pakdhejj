@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session; 
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use App\Models\Produk;
 use App\Models\Pesanan;
 use App\Models\DetailPesanan;
-// use Illuminate\Support\Facades\Input; 
+// use Illuminate\Support\Facades\Input;
 
 class CheckoutController extends Controller
 {
@@ -35,7 +35,7 @@ class CheckoutController extends Controller
             if ($jml_org == 2) {
                 # code...
                 $mejanya = rand(21, 25);
-            } 
+            }
             elseif ($jml_org == 4) {
                 # code...
                 $mejanya = rand(26, 30);
@@ -56,7 +56,7 @@ class CheckoutController extends Controller
                 # code...
                 return 'ewow';
             }
-        } 
+        }
         else {
             # code...
             $mejanya = $request->input('no_meja');
@@ -71,7 +71,7 @@ class CheckoutController extends Controller
         $pesanan->save();
         $idpesanan = $pesanan->id_nota;
 
-        for ($i=0; $i < count($cartdata); $i++) { 
+        for ($i=0; $i < count($cartdata); $i++) {
             $detailPesanan = new DetailPesanan;
             $detailPesanan->jumlah = $cartdata[$i]['count'];
             if (isset($cartdata[$i]['name'])) {
@@ -91,7 +91,7 @@ class CheckoutController extends Controller
             ->with('success', 'Berhasil melakukan pemesanan!');
     }
 
-    public function success() 
+    public function success()
     {
         return view('success');
             // ->with('success', 'Berhasil melakukan pemesanan!');

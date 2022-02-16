@@ -56,17 +56,29 @@ class AdminController extends Controller
             ->where('isdone', '=', 1)
             ->count();
 
+        $totalSelling = $allselling
+            ->where('isdone', '=', 1)
+            ->sum('total_harga');
+
+        $totalSellingEachMonth = DB::table('pesanans')
+            ->selectRaw("sum(total_harga) as total, DATE_FORMAT(created_at, '%Y') AS year, DATE_FORMAT(created_at, '%m') AS month, DATE_FORMAT(created_at, '%M-%Y') AS period")
+            ->where('isdone','=',1)
+            ->groupBy(['year','month','period'])
+            ->orderBy('year')
+            ->orderBy('month')
+            ->get();
+
         // $nprodsell = 0;
-        // for ($i=0; $i < $nselling; $i++) { 
+        // for ($i=0; $i < $nselling; $i++) {
         //     # code...
         //     $produkselling[$i] = DB::table('detail_pesanans')
         //         ->join('produks', 'detail_pesanans.produk_id', '=', 'produks.id_produk')
         //         ->select('detail_pesanans.jumlah', 'produks.nama')
         //         ->where('produk_id','=', $allproduk[$i]->id_produk)
         //         ->get();
-            
+
             // $nprodsell;
-            // for ($j=0; $j < count($produkselling); $j++) { 
+            // for ($j=0; $j < count($produkselling); $j++) {
             //     # code...
             //     $nprodsell += $produkselling[$i][$j]->jumlah;
             // }
@@ -87,7 +99,9 @@ class AdminController extends Controller
             ->with('allproduk', $allproduk)
             ->with('nproduk', $nproduk)
             ->with('produkselling', $produkselling)
-            ->with('nselling', $nselling);
+            ->with('nselling', $nselling)
+            ->with('totalSelling', $totalSelling)
+            ->with('totalSellingEachMonth', $totalSellingEachMonth);
             // ->with('nprodsell', $nprodsell)
         // return $produkselling;
     }
@@ -99,7 +113,7 @@ class AdminController extends Controller
         // $addProduk = new ProdukController;
         // return $addProduk->store($request);
     }
-    
+
     public function selling() {
         $allselling = Pesanan::all();
         $nselling = $allselling->count();
@@ -107,9 +121,9 @@ class AdminController extends Controller
         $nsucselling = DB::table('pesanans')
             ->where('isdone', '=', 1)
             ->get();
-        
+
         $sumselling = 0;
-        for ($c=0; $c < $nsucselling->count(); $c++) { 
+        for ($c=0; $c < $nsucselling->count(); $c++) {
             # code...
             $sumselling += $nsucselling[$c]->total_harga;
         }
@@ -118,7 +132,7 @@ class AdminController extends Controller
         // $produkbought = $allprodukbought
         //     ->with('nota_id','=', $allselling->id_nota);
         $produkbought = [];
-        for ($i=0; $i < $nselling; $i++) { 
+        for ($i=0; $i < $nselling; $i++) {
             # code...
             $produkbought[$i] = DB::table('detail_pesanans')
                 ->join('produks', 'detail_pesanans.produk_id', '=', 'produks.id_produk')
@@ -129,7 +143,7 @@ class AdminController extends Controller
 
         $sellingnow = $allselling
             ->where('isdone', '=', 0);
-            
+
         $sellinghis = $allselling
             ->where('isdone', '!=', 0);
 
@@ -150,8 +164,8 @@ class AdminController extends Controller
         if ($donenow == 0) {
             $accselling->isdone = 1;
             $accselling->save();
-        } 
-        
+        }
+
         return redirect('/admin/selling')
             ->with('success', 'Pesanan berhasil di-update');
     }
@@ -162,8 +176,8 @@ class AdminController extends Controller
         if ($donenow == 0) {
             $decselling->isdone = 2;
             $decselling->save();
-        } 
-        
+        }
+
         return redirect('/admin/selling')
             ->with('success', 'Pesanan berhasil di-batalkan');
     }

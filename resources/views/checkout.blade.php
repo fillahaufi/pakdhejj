@@ -18,7 +18,7 @@
         {{-- <div style="width: 500px" id="reader"></div> --}}
         <div class="uk-overflow-auto">
             <table class="show-cart uk-table uk-table-striped">
-                
+
             </table>
         </div>
         <div class="uk-text-left fw-bold" style="width: fit-content">
@@ -142,16 +142,29 @@
 <script>
     // $("#submitdata").click(function(){
     $(document).ready(function() {
-        let testurl="";
-        for(let i=0; i<cart.length; i++) {
-            testurl += "halah%5B"+i+"%5D%5Bname%5D="+cart[i].name+"&"+"halah%5B"+i+"%5D%5Bprice%5D="+cart[i].price+"&"+"halah%5B"+i+"%5D%5Bcount%5D="+cart[i].count+"&";
-        };
-        var usertoken = '{{ csrf_token() }}';
-        var nexturl = "/checkout/" + usertoken + testurl;
-        var cartdata = [];
-        cartdata = cart;
-        document.getElementById('lalala').action += testurl;
-        document.getElementById('lalala2').action += testurl;
+        $('#lalala').submit(function (){
+            let testurl="";
+            for(let i=0; i<cart.length; i++) {
+                testurl += "halah%5B"+i+"%5D%5Bname%5D="+cart[i].name+"&"+"halah%5B"+i+"%5D%5Bprice%5D="+cart[i].price+"&"+"halah%5B"+i+"%5D%5Bcount%5D="+cart[i].count+"&";
+            };
+            var usertoken = '{{ csrf_token() }}';
+            var nexturl = "/checkout/" + usertoken + testurl;
+            var cartdata = [];
+            cartdata = cart;
+            document.getElementById('lalala').action += testurl;
+        });
+
+        $('#lalala2').submit(function (){
+            let testurl="";
+            for(let i=0; i<cart.length; i++) {
+                testurl += "halah%5B"+i+"%5D%5Bname%5D="+cart[i].name+"&"+"halah%5B"+i+"%5D%5Bprice%5D="+cart[i].price+"&"+"halah%5B"+i+"%5D%5Bcount%5D="+cart[i].count+"&";
+            };
+            var usertoken = '{{ csrf_token() }}';
+            var nexturl = "/checkout/" + usertoken + testurl;
+            var cartdata = [];
+            cartdata = cart;
+            document.getElementById('lalala2').action += testurl;
+        });
 
         let totalni = document.getElementById('totalni');
         totalni.value += shoppingCart.totalCart(cart);
