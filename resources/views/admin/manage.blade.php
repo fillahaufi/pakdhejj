@@ -29,7 +29,7 @@
                             <tr>
                                 <td><img src="{{url('/product_img'.'/'.$produk->img_path)}}" alt="" style="width: 200px"></td>
                                 <td style="text-transform: capitalize">{{ $produk->nama }}</td>
-                                <td>133</td>
+                                <td>{{$produk->detailpesanans->sum('jumlah')}}</td>
                                 <td>
                                     @if ($produk->isavail == 0)
                                         Non-Aktif
