@@ -60,6 +60,14 @@ class AdminController extends Controller
             ->where('isdone', '=', 1)
             ->sum('total_harga');
 
+        $totalSellingEachMonth = DB::table('pesanans')
+            ->selectRaw("sum(total_harga) as total, DATE_FORMAT(created_at, '%Y') AS year, DATE_FORMAT(created_at, '%m') AS month, DATE_FORMAT(created_at, '%M-%Y') AS period")
+            ->where('isdone','=',1)
+            ->groupBy(['year','month','period'])
+            ->orderBy('year')
+            ->orderBy('month')
+            ->get();
+
         // $nprodsell = 0;
         // for ($i=0; $i < $nselling; $i++) {
         //     # code...
@@ -92,7 +100,8 @@ class AdminController extends Controller
             ->with('nproduk', $nproduk)
             ->with('produkselling', $produkselling)
             ->with('nselling', $nselling)
-            ->with('totalSelling', $totalSelling);
+            ->with('totalSelling', $totalSelling)
+            ->with('totalSellingEachMonth', $totalSellingEachMonth);
             // ->with('nprodsell', $nprodsell)
         // return $produkselling;
     }
