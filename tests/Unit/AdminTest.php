@@ -36,4 +36,27 @@ class AdminTest extends TestCase
         $response->assertStatus(302)
             ->assertRedirect('/');
     }
+
+    public function test_manage_route() {
+        $response = $this->post('/authenticate', [
+            'email' => 'admin@example.com',
+            'password' => 'password',
+        ]);
+
+        $response = $this->get('/admin/manage');
+        $response->assertStatus(200)
+            ->assertViewIs('admin.manage');
+
+    }
+
+    public function test_selling_route() {
+        $response = $this->post('/authenticate', [
+            'email' => 'admin@example.com',
+            'password' => 'password',
+        ]);
+
+        $response = $this->get('/admin/selling');
+        $response->assertStatus(200)
+            ->assertViewIs('admin.selling');
+    }
 }
